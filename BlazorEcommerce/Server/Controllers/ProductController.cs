@@ -1,26 +1,12 @@
-﻿<ul class="list-unstyled">
-    @foreach (var product in Products)
-    {
-        <li class="media my-3">
-            <div class="media-img-wrapper mr-2">
-                <a href="#">
-                    <img class="media-img" src="@product.ImageURL" alt="@product.Title" />
-                </a>
-            </div>
-            <div class="media-body">
-                <a href="#">
-                    <h4 class="mb-0">@product.Title</h4>
-                </a>
-                <p>@product.Description</p>        
-                <h5 class="price">
-                    $@product.Price
-                </h5>
-            </div>
-        </li>
-    }
-</ul>
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
-@code {
+namespace BlazorEcommerce.Server.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ProductController : ControllerBase
+    {
 
         private static List<Product> Products = new List<Product>
         {
@@ -49,6 +35,11 @@
                 Price = 19.84m
             }
         };
-    
-    
+
+        [HttpGet]
+        public async Task<IActionResult> GetProduct()
+        {
+            return Ok(Products);
+        }
+    }
 }
