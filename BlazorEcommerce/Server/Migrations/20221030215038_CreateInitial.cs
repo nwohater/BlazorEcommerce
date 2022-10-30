@@ -1,6 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
+//dotnet tool install --global dotnet-ef
+//dotnet ef migrations add CreateInitial
+//dotnet ef database update
 
 namespace BlazorEcommerce.Server.Migrations
 {
